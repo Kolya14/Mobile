@@ -22,10 +22,9 @@ class GarbageBinTest extends TestCase
             "Корзина должна вернуть какой-то мусор"
         );
         // но это происходит из раза в раз
-        $this->assertInstanceOf(
-            TrashInterface::class,
+        $this->assertNull(
             $bin->removeTrash(),
-            "корзина постоянно возвращает мусор!"
+            "корзина не возвращает мусор!"
         );
     }
 }

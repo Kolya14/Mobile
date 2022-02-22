@@ -8,10 +8,25 @@ use Ekomobile\CodingChallenge\Stuff\TrashInterface;
 class GarbageBin implements GarbageBinInterface
 {
     /**
+    * Мусор
+    * 
+    * @var Trash
+    */
+    private $trash;
+    
+    public function __construct()
+    {
+        $this->trash = new Trash();
+    }
+    
+    /**
      * {@inheritdoc}
      */
-    public function removeTrash(): TrashInterface
+    public function removeTrash(): ?TrashInterface
     {
-        return new Trash();
+        $trash = $this->trash;
+        unset($this->trash);
+        
+        return $trash;
     }
 }
