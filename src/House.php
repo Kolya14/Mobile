@@ -20,17 +20,42 @@ class House implements HouseInterface
 
     public function __construct()
     {
-        $this->rooms = new Set([new Bathroom(),new LivingRoom(), new Bedroom(), new Kitchen()]);
+        $this->rooms = new Set([new Bathroom(), new Bedroom(), new Kitchen()]);
+    }
+    
+    /**
+    * Добавить комнату
+    * 
+    * @param SpaceInterface $room
+    */
+    public function addRoom(SpaceInterface $room)
+    {
+        $this->rooms->add($room);
+    }
+    
+    /**
+    * Получить комнаты
+    * 
+    * @return SpaceInterface[]
+    */
+    public function getRooms()
+    {
+        return $this->rooms->all();
     }
 
     /**
      * Комната или дом может принимать посетителей.
      *
      * @param VisitorInterface $person
-     * @return SpaceInterface
+     * @return string
      */
-    public function accept(VisitorInterface $person): SpaceInterface
+    public function accept(VisitorInterface $person): string
     {
-        // TODO: Implement accept() method.
+        $output = "";
+        foreach ($this->rooms as $room) {
+            /** @var SpaceInterface $room */
+            $output .= $room->accept($person) . "\n";
+        }
+        return $output;
     }
 }
