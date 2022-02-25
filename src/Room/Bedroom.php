@@ -72,8 +72,8 @@ class Bedroom implements BedroomInterface
      * @param VisitorInterface $person
      * @return SpaceInterface
      */
-    public function accept(VisitorInterface $person): SpaceInterface
+    public function accept(VisitorInterface $person): string
     {
-        // TODO: Implement accept() method.
+        return $person->visitBedroom($this);
     }
 }

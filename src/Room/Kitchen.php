@@ -10,6 +10,7 @@ use Ekomobile\CodingChallenge\Furniture\GarbageBin;
 use Ekomobile\CodingChallenge\Furniture\GarbageBinInterface;
 use Ekomobile\CodingChallenge\Furniture\Sink;
 use Ekomobile\CodingChallenge\Furniture\SinkInterface;
+use Ekomobile\CodingChallenge\Furniture\Tv;
 use Ekomobile\CodingChallenge\Furniture\TvInterface;
 use Ekomobile\CodingChallenge\SpaceInterface;
 use Ekomobile\CodingChallenge\VisitorInterface;
@@ -50,6 +51,7 @@ class Kitchen implements KitchenInterface
         $this->sink = new Sink();
         $this->garbageBin = new GarbageBin();
         $this->cooker = new Cooker();
+        $this->tv = new Tv();
     }
 
     /**
@@ -95,8 +97,8 @@ class Kitchen implements KitchenInterface
      * @param VisitorInterface $person
      * @return SpaceInterface
      */
-    public function accept(VisitorInterface $person): SpaceInterface
+    public function accept(VisitorInterface $person): string
     {
-        // TODO: Implement accept() method.
+        return $person->visitKitchen($this);
     }
 }

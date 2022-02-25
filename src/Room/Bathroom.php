@@ -46,8 +46,8 @@ class Bathroom implements BathroomInterface
     /**
      * {@inheritdoc}
      */
-    public function accept(VisitorInterface $person): SpaceInterface
+    public function accept(VisitorInterface $person): string
     {
-        // TODO: Implement accept() method.
+        return $person->visitBathroom($this);
     }
 }
